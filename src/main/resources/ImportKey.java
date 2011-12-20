@@ -33,7 +33,7 @@ import java.util.Iterator;
  *
  * <p><em>Caution:</em> the old <code>keystore.ImportKey</code>-file is
  * deleted and replaced with a keystore only containing <code>YOUR.KEY</code>
- * and <code>YOUR.CERT</code>. The keystore and the key has no password; 
+ * and <code>YOUR.CERT</code>. The keystore and the key has no password;
  * they can be set by the <code>keytool -keypasswd</code>-command for setting
  * the key password, and the <code>keytool -storepasswd</code>-command to set
  * the keystore password.
@@ -47,7 +47,7 @@ import java.util.Iterator;
  * @version 1.1
  **/
 public class ImportKey  {
-    
+
     /**
      * <p>Creates an InputStream from a file, and fills it with the complete
      * file. Thus, available() on the returned InputStream will return the
@@ -64,9 +64,9 @@ public class ImportKey  {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         return bais;
     }
-        
+
     /**
-     * <p>Takes two file names for a key and the certificate for the key, 
+     * <p>Takes two file names for a key and the certificate for the key,
      * and imports those into a keystore. Optionally it takes an alias
      * for the key.
      * <p>The first argument is the filename for the key. The key should be
@@ -82,10 +82,10 @@ public class ImportKey  {
      * [2] Alias for the key.
      **/
     public static void main ( String args[]) {
-        
+
         // change this if you want another password by default
         String keypass = "importkey";
-        
+
         // change this if you want another alias by default
         String defaultalias = "importkey";
 
@@ -112,7 +112,7 @@ public class ImportKey  {
         }
 
         try {
-            // initializing and clearing keystore 
+            // initializing and clearing keystore
             KeyStore ks = KeyStore.getInstance("JKS", "SUN");
             ks.load( null , keypass.toCharArray());
             System.out.println("Using keystore-file : "+keystorename);
@@ -148,7 +148,7 @@ public class ImportKey  {
             }
 
             // storing keystore
-            ks.setKeyEntry(defaultalias, ff, 
+            ks.setKeyEntry(defaultalias, ff,
                            keypass.toCharArray(),
                            certs );
             System.out.println ("Key and certificate stored.");
